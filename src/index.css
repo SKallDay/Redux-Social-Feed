@@ -2,6 +2,10 @@
   --redux-color: #764abc;
 }
 
+.App {
+  padding-bottom: 40px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
