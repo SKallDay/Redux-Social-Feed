@@ -19,9 +19,9 @@ export const AddPostForm = () => {
   const onSavePostClicked = () => {
     if (title && content) {
      dispatch(postAdded(title, content, userId));
-     console.log(userId);
      setTitle('');
      setContent('');
+     setUserId('')
     }
   }
 
@@ -29,7 +29,7 @@ export const AddPostForm = () => {
 
   const usersOptions = users.map(user => (
     <option key={user.id} value={user.id}>
-      {user.id}
+      {user.name}
     </option>
   ))
 
