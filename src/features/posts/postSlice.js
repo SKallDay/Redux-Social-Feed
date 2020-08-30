@@ -1,7 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { nanoid } from '@reduxjs/toolkit'
 import { sub } from 'date-fns'
-import { client } from '../../api/client'
+import { client } from '../../api/client';
+
+export const addNewPost = createAsyncThunk('posts/addNewPosts', async initialPost => {
+  const response = await client.post('/fakeApi/posts', {post: initialPost});
+  return response.post;
+});
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   const response = await client.get('/fakeApi/posts');
@@ -69,6 +74,9 @@ const postSlice = createSlice({
     [fetchPosts.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
+    },
+    [addNewPost.fulfilled]: (state, action) => {
+      state.posts.push(action.payload);
     }
   }
 })
